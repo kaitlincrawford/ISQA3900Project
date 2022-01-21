@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+<style>
+    /* Container holding the image and the text */
+.container {
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+/* Centered text */
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #222222;
+}
+
+.btn{
+    width : 150px;
+    background-color: #77b6e2;
+}
+</style>
+</head>
+<body>
+   {% if user.is_authenticated %}
+       <div class="page-container">
+
+           <h2 class="top-menu">Hello {{ user.username }},</h2>
+           <p>Welcome to our website.</p>
+       </div>
+   {% endif %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+                <div class="links">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container">
+                                <div class="centered">
+                                    <h1 style="font-family: Helvetica">Check out our latest collection of Watches</h1>
+                                    <p><a class="btn btn-default" href="{% url 'shop:product_list' %}"
+                                           role="button">Shop Now</a></p>
+                                </div>
+                                <img src="{% static "img/watch_face.png" %}" alt="watch-face" style="width:40%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+</html>

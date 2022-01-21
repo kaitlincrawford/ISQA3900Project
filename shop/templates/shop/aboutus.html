@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>About Wear-A-Watch</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+<style>
+    /* Container holding the image and the text */
+.container {
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+/* Centered text */
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #222222;
+}
+
+.btn{
+    width : 150px;
+    background-color: #77b6e2;
+}
+
+h2{
+    font-size: large;
+}
+
+
+</style>
+</head>
+<body>
+   {% if user.is_authenticated %}
+       <div class="page-container">
+
+           <h2 class="top-menu">Hello {{ user.username }},</h2>
+           <p>Learn more about Wear-A-Watch!</p>
+       </div>
+   {% endif %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+                <div class="links">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="container">
+                                <div class="centered">
+                                    <br><br><br><br>
+                                    <h1 style="font-family: Helvetica">About Wear-A-Watch</h1>
+                                    <br>
+                                    <p>Wear-A-Watch is a online business that sells luxury watches. Wear-A-Watch was founded and created in 2021.</p>
+                                    <p>As of now, we sell three different branded watches that all are a variety of styles to give options to our customers!</p>
+                                    <p>We strive for all of our customers to find a watch they will enjoy and use for many years to come.</p>
+                                    <p>This is possible by making sure the quality of all watches sold are the best and uphold to our standards so that no one is disappointed.</p>
+                                    <h2>We hope you find a watch to add to your collection or even your first one! Click "shop now" to explore the watches available.</h2>
+                                </div>
+                                <p></p><a class="btn btn-default" href="{% url 'shop:product_list' %}"
+                                   role="button">Shop Now</a></p>
+                                <img src="{% static "img/logo.png" %}" alt="logo" style="width:40%;">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+
+{% endblock %}
+</html>

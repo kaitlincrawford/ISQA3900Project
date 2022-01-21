@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "shop/base.html" %}
+<form>
+{% block title %}Log In{% endblock title %}
+{% block content %}
+<div class="container">
+<h2>Log In</h2>
+    {%  if form.errors %}
+    <p>
+    Your username and password didn't match.
+    Please try again.
+    </p>
+    {%  endif %}
+    <div class="login-form">
+     <form action=""{%  url 'login' %} method="post">
+         {{  form.as_p }}
+         {%  csrf_token %}
+        <div>
+            <input type="hidden" name="next" value="{{  next }}"/>
+            <p><input type="submit" value="Log-in"></p>
+        </div>
+     </form>
+    </div>
+</div>
+    <div class="container">
+        <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+        <p>New User?<a href="{% url 'shop:registration' %}"> Register Here</a></p>
+    </div>
+</form>
+{% endblock content %}
